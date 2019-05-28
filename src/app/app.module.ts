@@ -1,9 +1,10 @@
+import { PessoaService } from './pessoas/pessoa.service';
 import { LancamentoService } from './lancamentos/lancamento.service';
 import { CoreModule } from './core/core.module';
 import { PessoasModule } from './pessoas/pessoas.module';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import {InputTextModule} from 'primeng/components/inputtext/inputtext';
 import {InputTextareaModule} from 'primeng/components/inputtextarea/inputtextarea';
 import {CalendarModule} from 'primeng/components/calendar/calendar';
@@ -28,6 +29,10 @@ import { HttpModule } from '@angular/http';
 // import { LancamentosGridComponent } from './lancamentos/lancamentos-grid/lancamentos-grid.component';
 // import { PessoasGridComponent } from './pessoas/pessoas-grid/pessoas-grid.component';
 
+import { ToastyModule } from 'ng2-toasty';
+import {  ConfirmDialogModule } from 'primeng/components/confirmdialog/confirmdialog';
+import { ConfirmationService } from 'primeng/components/common/api';
+
 @NgModule({
   declarations: [
     // apagamos os componentes que foram transferidos para lancamentosModule e pessoasModule
@@ -47,21 +52,16 @@ import { HttpModule } from '@angular/http';
     BrowserModule,
     HttpModule,
 
+    ToastyModule.forRoot(),
+    ConfirmDialogModule,
+
     CoreModule
-   /* InputTextModule,
-    InputTextareaModule,
-    ButtonModule,
-    DataTableModule,
-    TooltipModule,
-    CalendarModule,
-    BrowserAnimationsModule,
-    SelectButtonModule,
-    DropdownModule,
-    CurrencyMaskModule,
-    InputMaskModule,
-    FormsModule */
   ],
-  providers: [LancamentoService],
+  providers: [
+    LancamentoService,
+    PessoaService,
+    ConfirmationService,
+    { provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,11 +7,20 @@
 <app-lancamento-cadastro></app-lancamento-cadastro>
 
 
-<app-lancamentos-pessoa></app-lancamentos-pessoa>
 <app-pessoa-cadastro></app-pessoa-cadastro>
 -->
 
+<app-lancamentos-pessoa></app-lancamentos-pessoa>
 
-<app-lancamentos-pesquisa></app-lancamentos-pesquisa>
+
+<ng2-toasty></ng2-toasty>
+
+<p-confirmDialog header="Confirmação" icon="fa fa-question-circle" #confirmacao>
+  <p-footer>
+    <Button type="button" pButton icon="fa-check" label="Sim" (click)="confirmacao.accept()"></Button>
+    <Button type="button" pButton icon="fa-times" label="Nao" (click)="confirmacao.reject()"></Button>
+  </p-footer>
+</p-confirmDialog>
+
 
 
