@@ -10,6 +10,7 @@ export class ErrorHandlerService {
 
   handle(errorResponse: any) {
     let msg: string;
+    let msg2: string;
 
     if (typeof errorResponse === 'string') {
       msg = errorResponse;
@@ -18,7 +19,8 @@ export class ErrorHandlerService {
       msg = 'Ocorreu um erro ao processar seu pedido';
       try {
         errors = errorResponse.json();
-        msg = errors[0].msgUsuario + errors[1].msgDesenvolvedor ;
+        msg = errors[0].msgUsuario ;
+        msg2 = errors[0].msgDesenvolvedor ;
       } catch (e) { }
       console.error('Ocorreu um erro', errorResponse);
     } else {
@@ -27,6 +29,7 @@ export class ErrorHandlerService {
     }
 
     this.toasty.error(msg);
+    this.toasty.warning(msg2);
   }
 
 
