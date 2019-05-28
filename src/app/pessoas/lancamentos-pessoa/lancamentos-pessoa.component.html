@@ -26,8 +26,8 @@
       (onLazyLoad)="aoMudarPagina($event)" emptyMessage="Nenhum lançamento encontrado" #tabela>
 
         <p-column field="nome" header="Nome"></p-column>
-        <p-column field="cidade" header="Cidade"></p-column>
-        <p-column field="estado" header="Estado" styleClass="col-data"></p-column>
+        <p-column field="endereco.cidade" header="Cidade"></p-column>
+        <p-column field="endereco.estado" header="Estado" styleClass="col-data"></p-column>
 
         <p-column field="ativo" header="Status"  styleClass="col-valor">
           <ng-template let-pes="rowData" pTemplate="body">

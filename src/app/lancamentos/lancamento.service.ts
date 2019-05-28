@@ -1,3 +1,4 @@
+import { Lancamento } from './../core/model';
 import { Http, Headers, URLSearchParams } from '@angular/http';
 import { Injectable } from '@angular/core';
 
@@ -68,6 +69,18 @@ export class LancamentoService {
       .toPromise()
       .then(() => null);
 
+  }
+
+  adicionar( lancamento: Lancamento): Promise<Lancamento> {
+
+    const headers = new Headers();
+
+    headers.append('Authorization', 'Basic ZkBnLmNvbTphZG1pbg==');
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post(this.lancamentosUrl, JSON.stringify(lancamento), { headers })
+    .toPromise()
+    .then(response => response.json());
   }
 
 }

@@ -1,5 +1,5 @@
 <div class="container">
-  <form #f="ngForm" autocomplete="off">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvarPessoa(f)">
 
     <div class="ui-g">
       <div class="ui-g-12">
@@ -8,11 +8,14 @@
 
       <div class="ui-g-12 ui-fluid">
         <label>Nome</label>
-        <input pInputText type="text" name="nome" ngModel minlength="10" required #nome="ngModel">
+        <input pInputText type="text" name="nome" [(ngModel)]="pessoa.nome" minlength="10"
+        required #nome="ngModel">
 
 
         <app-message [control]="nome" error="required" text="informe o nomeo">
           </app-message>
+
+          <app-message [control]="nome" error="required" text="Informe o nome"></app-message>
 
           <app-message [control]="nome" error="minlength"
           text="Minimo de {{ nome.errors?.minlength?.requiredLength }} caracteres.
@@ -23,21 +26,18 @@
 
       <div class="ui-g-12 ui-md-9 ui-fluid">
         <label>Logradouro</label>
-        <input pInputText type="text" name="logradouro" ngModel required minlength="5" #logradouro="ngModel">
+        <input pInputText type="text" name="logradouro" [(ngModel)]="pessoa.endereco.logradouro"
+        required minlength="5" #logradouro="ngModel">
 
         <app-message [control]="logradouro" error="required" text="informe um logradouro">
-          </app-message>
-
-          <app-message [control]="logradouro" error="minlength"
-          text="Minimo de {{  logradouro.errors?.minlength?.requiredLength }} caracteres.
-          Você digitou apenas {{  logradouro.errors?.minlength?.actualLength }} caracteres">
           </app-message>
 
       </div>
 
       <div class="ui-g-12 ui-md-3 ui-fluid">
         <label>Numero</label>
-        <input pInputText type="text" name="numero" ngModel #numero="ngModel" required >
+        <input pInputText type="text" name="numero" [(ngModel)]="pessoa.endereco.numero"
+        #numero="ngModel" required >
 
         <app-message [control]="numero" error="required" text="informe o numero">
           </app-message>
@@ -46,12 +46,13 @@
 
       <div class="ui-g-12 ui-md-4 ui-fluid">
         <label>Complemento</label>
-        <input pInputText type="text">
+        <input pInputText type="text" [(ngModel)]="pessoa.endereco.complemento" name="complemento">
       </div>
 
       <div class="ui-g-12 ui-md-4 ui-fluid">
         <label>Bairro</label>
-        <input pInputText type="text" name="bairro" ngModel #bairro="ngModel" required>
+        <input pInputText type="text" name="bairro" name="complemento"
+         [(ngModel)]="pessoa.endereco.bairro" #bairro="ngModel" required>
 
         <app-message [control]="bairro" error="required" text="informe o bairro">
         </app-message>
@@ -60,7 +61,8 @@
 
       <div class="ui-g-12 ui-md-4 ui-fluid">
         <label>CEP</label>
-        <p-inputMask mask="999.9999-99" name="cep" ngModel #cep="ngModel" required></p-inputMask>
+        <p-inputMask mask="999.9999-99" name="cep" [(ngModel)]="pessoa.endereco.cep"
+        #cep="ngModel" required></p-inputMask>
 
         <app-message [control]="cep" error="required" text="informe o cep">
           </app-message>
@@ -69,7 +71,8 @@
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Cidade</label>
-        <input pInputText type="text" name="cidade" ngModel #cidade="ngModel" required>
+        <input pInputText type="text" name="cidade" [(ngModel)]="pessoa.endereco.cidade"
+        #cidade="ngModel" required>
 
         <app-message [control]="cidade" error="required" text="informe uma cidade">
           </app-message>
@@ -78,7 +81,8 @@
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Estado</label>
-        <input pInputText type="text" name="estado" ngModel #estado="ngModel" required>
+        <input pInputText type="text" name="estado" [(ngModel)]="pessoa.endereco.estado"
+         #estado="ngModel" required>
 
         <app-message [control]="estado" error="required" text="informe o estado">
           </app-message>
