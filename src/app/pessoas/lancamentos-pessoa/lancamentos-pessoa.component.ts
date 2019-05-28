@@ -46,8 +46,7 @@ export class LancamentosPessoaComponent implements OnInit  {
   excluir(pessoa: any) {
     this.pessoaService.excluirPessoa(pessoa.codigo)
     .then(() => {
-      if (this.grid.first === 0 )
-      {
+      if (this.grid.first === 0 ) {
         this.pesquisarPessoa();
       } else {
         this.grid.first = 0;
@@ -66,7 +65,7 @@ export class LancamentosPessoaComponent implements OnInit  {
       }
      });
     }
-/*
+
     alternarStatus(pessoa: any): void {
     const novoStatus = !pessoa.ativo;
 
@@ -78,7 +77,7 @@ export class LancamentosPessoaComponent implements OnInit  {
         this.toasty.success(`Pessoa ${acao} com sucesso!`);
       })
       .catch(erro => this.errorHandler.handle(erro));
-  }*/
+  }
 
 
   }
