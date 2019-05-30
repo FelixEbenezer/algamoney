@@ -20,6 +20,8 @@ import { Routes, RouterModule } from '@angular/router'
 import { PessoaCadastroComponent } from './pessoas/pessoa-cadastro/pessoa-cadastro.component';
 
  const routes: Routes = [
+
+  { path: '', component: LancamentosPesquisaComponent },
   { path: 'lancamentos', component: LancamentosPesquisaComponent },
     { path: 'lancamentos/novo', component: LancamentoCadastroComponent },
       { path: 'pessoas', component: LancamentosPessoaComponent },
