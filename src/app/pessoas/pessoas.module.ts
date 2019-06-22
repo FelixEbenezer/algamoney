@@ -18,9 +18,11 @@ import { CommonModule } from '@angular/common';
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
 import { SharedModule } from 'app/shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { PessoasRoutingModule } from './pessoas-routing.module';
 
 @NgModule({
   imports: [
+    PessoasRoutingModule,
     RouterModule,
     CommonModule,
     InputTextModule,

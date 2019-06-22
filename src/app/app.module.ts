@@ -1,3 +1,4 @@
+import { PaginaNaoEncontradoComponent } from './core/pagina-nao-encontrado.component';
 import { PessoaService } from './pessoas/pessoa.service';
 import { LancamentoService } from './lancamentos/lancamento.service';
 import { CoreModule } from './core/core.module';
@@ -18,15 +19,9 @@ import { LancamentoCadastroComponent } from './lancamentos/lancamento-cadastro/l
 import { LancamentosPessoaComponent } from './pessoas/lancamentos-pessoa/lancamentos-pessoa.component';
 import { Routes, RouterModule } from '@angular/router'
 import { PessoaCadastroComponent } from './pessoas/pessoa-cadastro/pessoa-cadastro.component';
+import { AppRoutingModule } from './app-routing.module';
+import { SegurancaModule } from './seguranca/seguranca.module';
 
- const routes: Routes = [
-
-  { path: '', component: LancamentosPesquisaComponent },
-  { path: 'lancamentos', component: LancamentosPesquisaComponent },
-    { path: 'lancamentos/novo', component: LancamentoCadastroComponent },
-      { path: 'pessoas', component: LancamentosPessoaComponent },
-      { path: 'pessoas/novo', component: PessoaCadastroComponent }
-];
 
 @NgModule({
   declarations: [
@@ -39,10 +34,12 @@ import { PessoaCadastroComponent } from './pessoas/pessoa-cadastro/pessoa-cadast
     PessoasModule,
     BrowserModule,
     HttpModule,
-    RouterModule.forRoot(routes),
-
+    SegurancaModule,
+//    RouterModule.forRoot(routes),
+    AppRoutingModule,
     ToastyModule.forRoot(),
     ConfirmDialogModule,
+
 
     CoreModule
   ],
@@ -51,7 +48,7 @@ import { PessoaCadastroComponent } from './pessoas/pessoa-cadastro/pessoa-cadast
     LancamentoService,
     PessoaService,
     ConfirmationService,
-    { provide: LOCALE_ID, useValue: 'pt-BR'}],
+    { provide: LOCALE_ID, useValue: 'fr-FR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

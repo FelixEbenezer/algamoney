@@ -58,11 +58,12 @@
             <span [style.color]="lanc.tipo === 'DESPESA' ? 'red' : 'blue'">{{ lanc.valor | number:'1.2-2' }}</span>
           </ng-template>
         </p-column>
-        <p-column styleClass="col-acoes">
+        <p-column styleClass="col-acoes" *ngIf="auth.temPermissao('ROLE_CADASTRAR_LANCAMENTO')">
           <ng-template let-lanc="rowData" pTemplate="body">
-            <a pButton icon="fa-pencil" pTooltip="editar" tooltipPosition="top"></a>
+            <a pButton icon="fa-pencil" pTooltip="editar" tooltipPosition="top"
+            [routerLink]="['/lancamentos',lanc.codigo]" *ngIf="auth.temPermissao('ROLE_CADASTRAR_LANCAMENTO')"></a>
             <Button pButton icon="fa-trash" pTooltip="apagar" tooltipPosition="top"
-            (click)="confirmarExclusao(lanc)"></Button>
+            (click)="confirmarExclusao(lanc)" *ngIf="auth.temPermissao('ROLE_REMOVER_LANCAMENTO')"></Button>
           </ng-template>
 
         </p-column>
@@ -72,7 +73,8 @@
    </div>
 
   <div class="ui-g-12">
-    <a pButton label="Novo Lancamento" routerLink="/lancamentos/novo"></a>
+    <a pButton label="Novo Lancamento" routerLink="/lancamentos/novo"
+    ></a>
     </div>
 
 </div>

@@ -3,6 +3,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { LazyLoadEvent, ConfirmationService } from 'primeng/components/common/api';
 import { ToastyService } from 'ng2-toasty';
 import { ErrorHandlerService } from 'app/core/error-handler.service';
+import { Title } from '@angular/platform-browser';
+import { AuthService } from 'app/seguranca/auth.service';
 @Component({
   selector: 'app-lancamentos-pesquisa',
   templateUrl: './lancamentos-pesquisa.component.html',
@@ -24,10 +26,12 @@ export class LancamentosPesquisaComponent implements OnInit {
     private errorHandler: ErrorHandlerService,
     private lancamentoService: LancamentoService,
     private toasty: ToastyService,
-    private confirmation: ConfirmationService) { }
+    private confirmation: ConfirmationService,
+    private titulo: Title,
+    public auth: AuthService) { }
 
   ngOnInit() {
-    // this.pesquisar();
+    this.titulo.setTitle('Pesquisa de lançamentos');
   }
 
   pesquisar(pagina = 0) {

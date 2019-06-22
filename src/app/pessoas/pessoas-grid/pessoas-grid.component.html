@@ -1,6 +1,6 @@
-<p-dataTable [value]="pessoas" [paginator]="true" [rows]="filtro.itensPorPagina" [responsive]="true"
+<p-dataTable [value]="pessoas" [paginator]="true" [responsive]="true"
 [lazy]="true" [totalRecords]="totalRegistros"
-      (onLazyLoad)="aoMudarPagina($event)" emptyMessage="Nenhum lançamento encontrado">
+       emptyMessage="Nenhum lançamento encontrado">
         <p-column field="nome" header="Nome"></p-column>
         <p-column field="cidade" header="Cidade"></p-column>
         <p-column field="estado" header="Estado" styleClass="col-data"></p-column>

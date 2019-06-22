@@ -39,11 +39,12 @@
 
         </p-column>
 
-        <p-column styleClass="col-acoes">
+        <p-column styleClass="col-acoes" >
           <ng-template let-lanc="rowData" pTemplate="body">
-            <a pButton icon="fa-pencil" pTooltip="editar" tooltipPosition="top"></a>
+            <a pButton icon="fa-pencil" pTooltip="editar" tooltipPosition="top"
+            [routerLink]="['/pessoas', lanc.codigo]"></a>
             <Button pButton icon="fa-trash" pTooltip="apagar" tooltipPosition="top"
-            (click)="confirmarExclusao(lanc)"> </Button>
+            (click)="confirmarExclusao(lanc)" [disabled]="!auth.temPermissao('ROLE_REMOVER_PESSOA')"> </Button>
           </ng-template>
 
         </p-column>
@@ -54,7 +55,8 @@
   </div>
 
   <div class="ui-g-12">
-    <a pButton label="Nova Pessoa" routerLink="/pessoas/novo"></a>
+    <a pButton label="Nova Pessoa" routerLink="/pessoas/novo"
+    *ngIf="auth.temPermissao('ROLE_CADASTRAR_PESSOA')"></a>
     </div>
 
 </div>
