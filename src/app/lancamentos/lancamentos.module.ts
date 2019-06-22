@@ -2,7 +2,7 @@ import { FormsModule } from '@angular/forms';
 import { InputMaskModule } from 'primeng/components/inputmask/inputmask';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { DropdownModule } from 'primeng/components/dropdown/dropdown';
-import { SelectButtonModule } from 'primeng/components/SelectButton/selectbutton';
+// import { SelectButtonModule } from 'primeng/components/SelectButton/selectbutton';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'primeng/components/calendar/calendar';
 import { TooltipModule } from 'primeng/components/tooltip/tooltip';
@@ -32,7 +32,7 @@ import { LancamentosRoutingModule } from './lancamentos-routing.module';
     TooltipModule,
     CalendarModule,
     BrowserAnimationsModule,
-    SelectButtonModule,
+    // SelectButtonModule,
     DropdownModule,
     CurrencyMaskModule,
     InputMaskModule,
