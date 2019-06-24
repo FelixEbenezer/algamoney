@@ -6,11 +6,11 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./pessoas-grid.component.css']
 })
 export class PessoasGridComponent {
-  filtro= false;
-  totalRegistros= 0;
-  itensPorPagina= 0;
+//  filtro= false;
+//  totalRegistros= 0;
+//  itensPorPagina= 0;
 
   @Input() pessoas = [];
-  aoMudarPagina() {};
+//  aoMudarPagina() {};
 
 }
