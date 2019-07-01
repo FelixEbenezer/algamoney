@@ -5,7 +5,6 @@ import { CoreModule } from './core/core.module';
 import { PessoasModule } from './pessoas/pessoas.module';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
@@ -22,14 +21,12 @@ import { PessoaCadastroComponent } from './pessoas/pessoa-cadastro/pessoa-cadast
 import { AppRoutingModule } from './app-routing.module';
 import { SegurancaModule } from './seguranca/seguranca.module';
 
+import { NgModule, LOCALE_ID } from '@angular/core';
+
 import { registerLocaleData } from '@angular/common';
-import localeFr from '@angular/common/locales/fr';
-import localeFrCaExtra from '@angular/common/locales/extra/fr';
+import localeDECH from '@angular/common/locales/de-CH';
 
-import localeBr from '@angular/common/locales/br';
-import localeBrExtra from '@angular/common/locales/extra/br';
-
-registerLocaleData(localeFr, localeBr, localeBrExtra);
+registerLocaleData(localeDECH);
 
 @NgModule({
   declarations: [
@@ -56,7 +53,7 @@ registerLocaleData(localeFr, localeBr, localeBrExtra);
     LancamentoService,
     PessoaService,
     ConfirmationService,
-    { provide: LOCALE_ID, useValue: 'pt-BR'}],
+    { provide: LOCALE_ID, useValue: 'de-ch'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
