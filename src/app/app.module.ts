@@ -48,7 +48,7 @@ import { SegurancaModule } from './seguranca/seguranca.module';
     LancamentoService,
     PessoaService,
     ConfirmationService,
-    { provide: LOCALE_ID, useValue: 'fr-FR'}],
+    { provide: LOCALE_ID, useValue: 'pt-BR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
