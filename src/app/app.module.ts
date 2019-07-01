@@ -22,6 +22,14 @@ import { PessoaCadastroComponent } from './pessoas/pessoa-cadastro/pessoa-cadast
 import { AppRoutingModule } from './app-routing.module';
 import { SegurancaModule } from './seguranca/seguranca.module';
 
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import localeFrCaExtra from '@angular/common/locales/extra/fr';
+
+import localeBr from '@angular/common/locales/br';
+import localeBrExtra from '@angular/common/locales/extra/br';
+
+registerLocaleData(localeFr, localeBr, localeBrExtra);
 
 @NgModule({
   declarations: [
