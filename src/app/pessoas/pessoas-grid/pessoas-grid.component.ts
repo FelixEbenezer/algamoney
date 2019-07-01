@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PessoasGridComponent {
 //  filtro= false;
-//  totalRegistros= 0;
+   totalRegistros = 0;
 //  itensPorPagina= 0;
 
   @Input() pessoas = [];
