@@ -9,6 +9,16 @@ import { NaoAutorizadoComponent } from './core/nao-autorizado.component';
 
  const routes: Routes = [
 
+// { path: 'lancamentos', loadChildren: 'app/lancamentos/lancamentos.module#LancamentosModule' },
+// { path: 'pessoas', loadChildren: 'app/pessoas/pessoas.module#PessoasModule' },
+
+{ path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule'},
+
+{ path: 'relatorios', loadChildren: './relatorios/relatorios.module#RelatoriosModule'},
+
+ { path: 'lancamentos', loadChildren: './lancamentos/lancamentos.module#LancamentosModule'},
+ { path: 'pessoas', loadChildren: './pessoas/pessoas.module#PessoasModule'},
+
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'pagina-nao-encontrado', component: PaginaNaoEncontradoComponent},
   { path: 'nao-autorizado', component: NaoAutorizadoComponent},

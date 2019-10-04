@@ -1,15 +1,15 @@
-import { FormsModule } from '@angular/forms';
-import { InputMaskModule } from 'primeng/components/inputmask/inputmask';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InputMaskModule } from 'primeng/inputmask';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
-import { DropdownModule } from 'primeng/components/dropdown/dropdown';
-import { SelectButtonModule } from 'primeng/components/selectbutton/selectbutton';
+import { DropdownModule } from 'primeng/dropdown';
+import { SelectButtonModule } from 'primeng/selectbutton';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CalendarModule } from 'primeng/components/calendar/calendar';
-import { TooltipModule } from 'primeng/components/tooltip/tooltip';
-import { DataTableModule } from 'primeng/components/datatable/datatable';
-import { ButtonModule } from 'primeng/components/button/button';
-import { InputTextareaModule } from 'primeng/components/inputtextarea/inputtextarea';
-import { InputTextModule } from 'primeng/components/inputtext/inputtext';
+import { CalendarModule } from 'primeng/calendar';
+import { TooltipModule } from 'primeng/tooltip';
+import { DataTableModule } from 'primeng/datatable';
+import { ButtonModule } from 'primeng/button';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputTextModule } from 'primeng/inputtext';
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -31,7 +31,8 @@ import { LancamentosRoutingModule } from './lancamentos-routing.module';
     DataTableModule,
     TooltipModule,
     CalendarModule,
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
+    ReactiveFormsModule,
     SelectButtonModule,
     DropdownModule,
     CurrencyMaskModule,

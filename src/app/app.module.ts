@@ -1,3 +1,4 @@
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { PaginaNaoEncontradoComponent } from './core/pagina-nao-encontrado.component';
 import { PessoaService } from './pessoas/pessoa.service';
 import { LancamentoService } from './lancamentos/lancamento.service';
@@ -7,11 +8,11 @@ import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { ToastyModule } from 'ng2-toasty';
-import {  ConfirmDialogModule } from 'primeng/components/confirmdialog/confirmdialog';
-import { ConfirmationService } from 'primeng/components/common/api';
+
+import { ConfirmationService } from 'primeng/api';
 import { CategoriaService } from './categorias/categoria.service';
 import { LancamentosPesquisaComponent } from './lancamentos/lancamentos-pesquisa/lancamentos-pesquisa.component';
 import { LancamentoCadastroComponent } from './lancamentos/lancamento-cadastro/lancamento-cadastro.component';
@@ -25,6 +26,8 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 
 import { registerLocaleData } from '@angular/common';
 import localeDECH from '@angular/common/locales/de-CH';
+import { BrowserAnimationBuilder } from '@angular/platform-browser/animations/src/animation_builder';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 registerLocaleData(localeDECH);
 
@@ -35,15 +38,16 @@ registerLocaleData(localeDECH);
   ],
   imports: [
     // importamos o novo modulo Lancamentos e Pessoas
-    LancamentosModule,
-    PessoasModule,
+  //  LancamentosModule,
+   // PessoasModule,
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     SegurancaModule,
 //    RouterModule.forRoot(routes),
     AppRoutingModule,
     ToastyModule.forRoot(),
     ConfirmDialogModule,
+    BrowserAnimationsModule,
 
 
     CoreModule

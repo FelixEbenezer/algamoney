@@ -1,15 +1,15 @@
 import { FormsModule } from '@angular/forms';
-import { InputMaskModule } from 'primeng/components/inputmask/inputmask';
+import { InputMaskModule } from 'primeng/inputmask';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { DropdownModule } from 'primeng/components/dropdown/dropdown';
 // import { SelectButtonModule } from 'primeng/components/selectbutton/selectbutton';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CalendarModule } from 'primeng/components/calendar/calendar';
-import { TooltipModule } from 'primeng/components/tooltip/tooltip';
-import { DataTableModule } from 'primeng/components/datatable/datatable';
-import { ButtonModule } from 'primeng/components/button/button';
-import { InputTextareaModule } from 'primeng/components/inputtextarea/inputtextarea';
-import { InputTextModule } from 'primeng/components/inputtext/inputtext';
+import { CalendarModule } from 'primeng/calendar';
+import { TooltipModule } from 'primeng/tooltip';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputTextModule } from 'primeng/inputtext';
 
 import { PessoasGridComponent } from './pessoas-grid/pessoas-grid.component';
 import { LancamentosPessoaComponent } from './lancamentos-pessoa/lancamentos-pessoa.component';
@@ -19,7 +19,10 @@ import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.compo
 import { SharedModule } from 'app/shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { PessoasRoutingModule } from './pessoas-routing.module';
-
+import { PanelModule } from 'primeng/panel';
+import { DataTableModule } from 'primeng/datatable';
+import { DialogModule} from 'primeng/dialog';
+import { ContatoPessoaCadastroComponent } from './contato-pessoa-cadastro/contato-pessoa-cadastro.component'
 @NgModule({
   imports: [
     PessoasRoutingModule,
@@ -28,22 +31,26 @@ import { PessoasRoutingModule } from './pessoas-routing.module';
     InputTextModule,
     InputTextareaModule,
     ButtonModule,
+    TableModule,
     DataTableModule,
     TooltipModule,
     CalendarModule,
-    BrowserAnimationsModule,
+   // BrowserAnimationsModule,
     // SelectButtonModule,
     DropdownModule,
     CurrencyMaskModule,
     InputMaskModule,
     FormsModule,
+    PanelModule,
+    DialogModule,
 
     SharedModule
   ],
   declarations: [
     LancamentosPessoaComponent,
     PessoaCadastroComponent,
-    PessoasGridComponent
+    PessoasGridComponent,
+    ContatoPessoaCadastroComponent
   ],
   exports: [
     LancamentosPessoaComponent,

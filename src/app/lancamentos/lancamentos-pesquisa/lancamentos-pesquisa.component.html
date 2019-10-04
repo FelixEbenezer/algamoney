@@ -60,9 +60,9 @@
         </p-column>
         <p-column styleClass="col-acoes" *ngIf="auth.temPermissao('ROLE_CADASTRAR_LANCAMENTO')">
           <ng-template let-lanc="rowData" pTemplate="body">
-            <a pButton icon="fa-pencil" pTooltip="editar" tooltipPosition="top"
-            [routerLink]="['/lancamentos',lanc.codigo]" *ngIf="auth.temPermissao('ROLE_CADASTRAR_LANCAMENTO')"></a>
-            <Button pButton icon="fa-trash" pTooltip="apagar" tooltipPosition="top"
+            <Button pButton icon="fa fa-pencil" pTooltip="editar" tooltipPosition="top"
+            [routerLink]="['/lancamentos',lanc.codigo]" *ngIf="auth.temPermissao('ROLE_CADASTRAR_LANCAMENTO')"></Button>
+            <Button pButton icon="fa fa-trash" pTooltip="apagar" tooltipPosition="top"
             (click)="confirmarExclusao(lanc)" *ngIf="auth.temPermissao('ROLE_REMOVER_LANCAMENTO')"></Button>
           </ng-template>
 

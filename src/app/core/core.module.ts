@@ -7,8 +7,11 @@ import { PaginaNaoEncontradoComponent } from './pagina-nao-encontrado.component'
 import { Title } from '@angular/platform-browser';
 import { SegurancaModule } from 'app/seguranca/seguranca.module';
 import { AuthService } from 'app/seguranca/auth.service';
-import { JwtHelper } from 'angular2-jwt';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { NaoAutorizadoComponent } from './nao-autorizado.component';
+import { DashboardService } from 'app/dashboard/dashboard.service';
+import { RelatoriosService } from 'app/relatorios/relatorios.service';
+import { MoneyHttp } from 'app/seguranca/money-http';
 
 @NgModule({
   imports: [
@@ -20,8 +23,11 @@ import { NaoAutorizadoComponent } from './nao-autorizado.component';
   providers: [
     ErrorHandlerService,
     Title,
+    DashboardService,
+    RelatoriosService,
+    MoneyHttp,
     AuthService,
-    JwtHelper
+    JwtHelperService
   ]
 })
 export class CoreModule { }

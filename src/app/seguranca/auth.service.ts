@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { JwtHelper } from 'angular2-jwt';
+// import { JwtHelper } from 'angular2-jwt';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from 'environments/environment';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class AuthService {
@@ -11,30 +13,29 @@ export class AuthService {
   jwtPayload: any;
 
   constructor(
-    private http: Http,
-    private jwtHelper: JwtHelper
+    private http: HttpClient,
+    private jwtHelperService: JwtHelperService
   ) {
     this.oauthTokenUrl = `${environment.apiUrl}/oauth/token`;
     this.carregarToken();
   }
 
   login(usuario: string, senha: string): Promise<void> {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    headers.append('Authorization', 'Basic YW5ndWxhcjphbmd1');
+    const headers = new HttpHeaders()
+    .append('Content-Type', 'application/x-www-form-urlencoded')
+    .append('Authorization', 'Basic YW5ndWxhcjphbmd1');
     const body = `username=${usuario}&password=${senha}&grant_type=password`;
 
-    return this.http.post(this.oauthTokenUrl, body, { headers, withCredentials: true })
+    return this.http.post<any>(this.oauthTokenUrl, body, { headers, withCredentials: true })
     .toPromise()
     .then(response => {
       // console.log(response);
-      this.armazenarToken(response.json().access_token);
+      this.armazenarToken(response.access_token);
     })
     .catch(response => {
       // console.log(response);
       if (response.status === 400) {
-        const responseJson = response.json();
-        if (responseJson.error === 'invalid_grant') {
+        if (response.error === 'invalid_grant') {
           return Promise.reject('Usuário ou Senha inválido');
         }
       }
@@ -43,7 +44,7 @@ export class AuthService {
   }
 
   private armazenarToken(token: string) {
-    this.jwtPayload = this.jwtHelper.decodeToken(token);
+    this.jwtPayload = this.jwtHelperService.decodeToken(token);
     // para armazenar o token no Local storage
     localStorage.setItem('token', token);
   }
@@ -61,15 +62,15 @@ export class AuthService {
   }
 
   obterNovoAccessToken(): Promise<void> {
-   const headers = new Headers();
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    headers.append('Authorization', 'Basic YW5ndWxhcjphbmd1');
+   const headers = new HttpHeaders()
+    .append('Content-Type', 'application/x-www-form-urlencoded')
+    .append('Authorization', 'Basic YW5ndWxhcjphbmd1');
     const body = 'grant_type=refresh_token';
 
-    return this.http.post(this.oauthTokenUrl, body, { headers, withCredentials: true })
+    return this.http.post<any>(this.oauthTokenUrl, body, { headers, withCredentials: true })
     .toPromise()
     .then(response => {
-      this.armazenarToken(response.json().access_token);
+      this.armazenarToken(response.access_token);
       console.log('Novo access token criado');
       return Promise.resolve(null);
     })
@@ -81,7 +82,7 @@ export class AuthService {
 
   isAccessTokenInvalido() {
     const token = localStorage.getItem('token');
-    return !token || this.jwtHelper.isTokenExpired(token);
+    return !token || this.jwtHelperService.isTokenExpired(token);
   }
 
    temQualquerPermissao(roles) {
@@ -98,7 +99,4 @@ export class AuthService {
     localStorage.removeItem('token');
     this.jwtPayload = null;
   }
-
-
-
 }

@@ -1,4 +1,4 @@
-import { Pessoa } from 'app/core/model';
+import { Pessoa, Contato } from 'app/core/model';
 import { Component, OnInit } from '@angular/core';
 import { PessoaService } from '../pessoa.service';
 import { ToastyService } from 'ng2-toasty';
@@ -14,7 +14,11 @@ import { Title } from '@angular/platform-browser';
 })
 export class PessoaCadastroComponent implements OnInit {
 
-  pessoa = new Pessoa()
+  pessoa = new Pessoa();
+  estados: any[];
+  cidades: any[];
+  estadoSelecionado: number;
+
 
   constructor(
     private pessoaService: PessoaService,
@@ -29,9 +33,10 @@ export class PessoaCadastroComponent implements OnInit {
 
     this.titulo.setTitle('Nova Pessoa')
 
+    this.carregarEstados();
+
     const codigoPessoa = this.route.snapshot.params['codigo'];
     if ( codigoPessoa ) {
-
       this.carregarPessoa(codigoPessoa);
     }
 
@@ -41,14 +46,37 @@ export class PessoaCadastroComponent implements OnInit {
     this.titulo.setTitle(`Edição da Pessoa: ${this.pessoa.nome}`);
   }
 
-
-    carregarPessoa( codigo: number ) {
-    this.pessoaService.buscarPorCodigo(codigo)
-    .then( pessoa => {
-      this.pessoa = pessoa;
-      this.atualizarTituloEdicao();
+   carregarEstados() {
+    this.pessoaService.listarEstados().then(lista => {
+      this.estados = lista.map(uf => ({ label: uf.nome, value: uf.codigo }));
     })
     .catch(erro => this.errorHandlerService.handle(erro));
+  }
+
+
+  carregarCidades() {
+    this.pessoaService.pesquisarCidades(this.estadoSelecionado).then(lista => {
+      this.cidades = lista.map(c => ({ label: c.nome, value: c.codigo }));
+    })
+    .catch(erro => this.errorHandlerService.handle(erro));
+  }
+
+
+carregarPessoa(codigo: number) {
+    this.pessoaService.buscarPorCodigo(codigo)
+      .then(pessoa => {
+        this.pessoa = pessoa;
+
+        this.estadoSelecionado = (this.pessoa.endereco.cidade) ?
+                this.pessoa.endereco.cidade.estado.codigo : null;
+
+        if (this.estadoSelecionado) {
+          this.carregarCidades();
+        }
+
+        this.atualizarTituloEdicao();
+      })
+      .catch(erro => this.errorHandlerService.handle(erro));
   }
 
     get editando() {

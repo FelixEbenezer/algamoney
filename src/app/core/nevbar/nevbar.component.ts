@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class NevbarComponent implements OnInit {
 
-  exibindoMenu= false;
+  exibindoMenu = false;
 
   constructor(
     public auth: AuthService,
