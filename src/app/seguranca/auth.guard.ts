@@ -1,7 +1,11 @@
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+<<<<<<< HEAD
 import { Observable } from 'rxjs';
+=======
+import { Observable } from 'rxjs/Observable';
+>>>>>>> 6c295d5763f0c6c1c9a2b538b974473aea9ef73d
 
 import { AuthService } from './auth.service';
 
