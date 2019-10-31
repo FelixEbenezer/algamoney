@@ -2,7 +2,8 @@ export const environment = {
   production: true,
   apiUrl: 'https://ngangalixapi.herokuapp.com',
 
-  tokenWhitelistedDomains: 'ngangalixapi.herokuapp.com',
-  tokenBlacklistedRoutes: '/oauth\/token'
+  tokenWhitelistedDomains: [ new RegExp('ngangalixapi.herokuapp.com') ],
+  tokenBlacklistedRoutes: [ new RegExp('\/oauth\/token') ]
+
 
 };
