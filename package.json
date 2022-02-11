@@ -24,7 +24,7 @@
     "@angular/platform-browser-dynamic": "7.2.5",
     "@angular/router": "7.2.5",
     "@auth0/angular-jwt": "^3.0.0",
-    "ajv": "^6.9.1",
+    "ajv": "^6.12.3",
     "chart.js": "^2.7.2",
     "core-js": "^2.4.1",
     "express": "^4.17.1",
