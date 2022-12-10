@@ -27,7 +27,7 @@
     "ajv": "^6.9.1",
     "chart.js": "^2.7.2",
     "core-js": "^2.4.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "font-awesome": "^4.7.0",
     "moment": "^2.18.1",
     "ng2-currency-mask": "^4.1.0",
